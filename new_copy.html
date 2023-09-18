@@ -1,0 +1,77 @@
+<html>
+<head>
+<script  src="jquery-3.7.1.min.js"></script>
+<script  src="jquery-validation_min.js"></script>
+</head>
+<style>
+.error{
+color:red;
+}
+</style>
+<body>
+
+
+<form  id="user">
+<h4>studen Details</h4>
+<table>
+<tr><th>First Name</th><td><input  type="text"  name="first_name"></td></tr>
+<tr><th>Last Name</th><td><input  type="text"  name="last_name"></td></tr>
+
+<tr><th>Upload photo</th><td><input  type="file"  id="file" name="image"  onChange="return fileValidation()"></td></tr>
+
+<tr><td></td><td><input  type="submit"></td></tr>
+
+
+</table>
+
+</form>
+
+</body>
+
+
+<script>
+jQuery.validator.addMethod("letter", function(value, element) {              /*while using number we can validate number using regular expression/^[0-9]+$/*/
+    return this.optional(element) || /^[a-zA-Z ]+$/i.test(value);                /*so much case sensitive        its id always will be unique*/
+});
+</script>
+
+<script>
+$('#user').validate({
+      rules: {
+         first_name:{required: true,letter: true,maxlength:30,minlength:5},
+         last_name:{required: true,letter: true,maxlength:20},
+         image:{required:true}
+
+        },
+       
+       messages: {
+               first_name:{required:"Enter your First name",letter:"pls Enter correct First Name",maxlength:"No more than 30 char"},
+               last_name:{required:"Enter your Last name",letter:"pls Enter correct Last Name",maxlength:"No more than 30 char"},
+               image:{required:"pls select file"}
+           }
+
+});
+</script>
+
+<script>
+
+function fileValidation(){
+var fileInput=document.getElementById('file');
+var filePath=fileInput.value;
+
+//Allowing file type
+
+var allowed=/(\.jpg|\.jpeg|\.png|\.pdf|\.docx)$/i;
+
+if(!allowed.exec(filePath)){
+alert('Invalid file type only jpg/jpeg/png/pdf/docx Allowed');
+fileInput.value='';
+return false;
+}
+
+}
+
+</script>
+
+
+</html>
