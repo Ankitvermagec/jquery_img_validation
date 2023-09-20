@@ -83,7 +83,7 @@ return false;
 $(document).ready(function(){
 $('#file').change(function(){
 var fileSize=this.files[0].size;    //get the size of the selected file in bytes
-var maxSize=1024 *100;          //set the maximum file size limit to 1MB (in bytes)
+var maxSize=1024 *1000;          //set the maximum file size limit to 1MB (in bytes)
     if(fileSize > maxSize){
         alert('The selected file exceeds the maximum size limit of 1 MB');
         this.value = null;   //reset the input element to allow selecting a different file
