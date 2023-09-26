@@ -8,7 +8,7 @@
 
 <style>
 body{
-background:url("img/bg2.jpg");
+background:url("bg2.jpg");
 background-repeat:no-repeat;
 background-size:cover;
 background-position:center;
@@ -33,7 +33,7 @@ var a=["A.png","B.png","C.png","D.png","E.gif","F.gif","G.gif","re.jpg","re.jpg"
 var i=0;
 $(document).ready(function(){
 $("button").click(function(){
-$(".ca").append(`  <div class="col-12  col-lg-3">    <img  src='img/${a[i]}'>  </div>`);
+$(".ca").append(`  <div class="col-12  col-lg-3">    <img  src='${a[i]}'>  </div>`);
 i=i+1;
 });
 });
