@@ -1,0 +1,163 @@
+<html>
+<head>
+<script  src="jquery-3.7.1.min.js"></script>
+<script  src="jquery-validation_min.js"></script>
+</head>
+<style>
+.error{
+color:red;
+}
+
+form{
+display:none;
+}
+
+h1{
+background-color:black;
+color:gold;
+width:fit-content;    /*width:max-content;*/
+margin:auto;
+margin-bottom:5px;
+}
+
+::selection{     /*psudo css*/
+background-color:blue;
+color:gold;
+}
+</style>
+
+<script>
+
+$(document).ready(function(){
+$("h1").click(function(){
+$("form").toggle(10000);
+
+$("this").animate({left:'40px'},"slow");
+
+});
+});
+
+
+
+
+
+
+//sometime table css will work in % not in px
+//for performing animation we use jquery
+//required true in dquery for that coloumn should not be blank
+//regular expression /^ +$/
+//heres the need of name of each form member
+//name must be similar in every rules messages in jquery
+//here two main function will work 1first is rules: and 2second one is messages:
+$(function(){
+$("#register").validate({
+
+   rules: {
+     
+      uname:"required",
+      fname:"required",
+      state:"required",
+      gen:"required",
+      skill:"required",
+      img:"required",
+      hobbie:"required",
+
+   mobile: {
+
+       required:true,
+       number:true,
+       minlength:10,
+       maxlength:10
+      
+         },
+
+   email:{
+     required:true,
+     email:true
+    },
+   
+   pwd:{
+      required:true,
+      //pwd:true,                //comment it wont work
+      minlength:5,
+      maxlength:8
+       }
+
+        },
+
+   messages:{
+       
+            uname:"pls enter the right name",
+            fname:"pls enter the father name",
+            state:"pls enter the state",
+            gen:"pls select the gender",
+            skill:"pls select the skill",
+            img:"how dare you didn't select this",
+            hobbie:"select the hobbie don't be burden for us",
+
+    mobile:{
+             required:"This field is required.",
+             number:"Please enter a valid number.",
+             minlength:"Please enter at least 10 characters.",
+             maxlength:"Please enter no more than 10 characters."
+               },
+    pwd:{
+             required:"This field is required.",
+             minlength:"Please enter at least 5 characters.",
+             maxlength:"Please enter no more than 8 characters."
+
+       }
+
+        }
+
+
+});
+
+});
+</script>
+
+
+<body>
+
+<h1>REGISTRATION</h1>
+
+<form action="#" method="#"  id="register">
+<table align="center" border="10px" cellspacing="" cellpadding="" style="text-align:center;">
+    <tr><th rowspan="12"><h3>REGISTRATION</h3></th></tr>
+    <tr><th>Enter a name:</th><td><input type="text"  name="uname" ></td></tr>
+    <tr><th>Enter a Father name:</th><td><input type="text" name="fname"></td></tr>
+   <tr><th>Enter a Mobile number:</th><td><input type="text" name="mobile" ></td></tr>  
+<tr><th>Enter an Email</th><td><input type="text" name="email"></td></tr>
+    <tr><th>Enter a password:</th><td><input type="password" name="pwd"></td></tr>
+    <!-- <tr><th>Re-Enter password:</th><td><input type="password" name="r_pwd"></td></tr>   !-->
+    <tr><th>Select Gender</th>
+    <td>Male<input type="radio" name="gen"  value="m">Female<input type="radio" name="gen" value="f"></td></tr>
+ 
+ <tr><th>Select State</th><td>
+     <select  name="state">
+         <option value=''>---------</option>
+         <option>MP</option>
+         <option>up</option>
+         </select>
+         </td></tr>
+         
+ <tr><th>Select Skill</th><td>
+     <select  name="skill"  multiple>
+         <option value=''>---------</option>
+         <option>c</option>
+         <option>cpp</option>
+         <option>python</option>
+         <option>php</option>
+         </select>
+         </td></tr>         
+         
+<tr><th>Select File</th><td><input type="file" name="img"></td></tr>         
+<tr><th>Select Hobbie's</th><td>Cricket<input type="checkbox" name="hobbie" value="cri"> Football<input type="checkbox" name="hobbie" value="foot"> Hockey<input type="checkbox" name="hobbie"  value="hoc"></td></tr>
+         
+    <tr><th></th><td><input type="submit" onclick="return abc()"> <input type="reset"></td></tr>
+</table>  
+
+</form>
+    
+</body>    
+    </html>
